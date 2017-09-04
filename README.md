@@ -3,7 +3,7 @@ Build and install OpenCV for the NVIDIA Jetson TX1
 
 These scripts build OpenCV version 3.3 for the Jetson TX1.
 
-JetPack gives the option of installing OpenCV4Tegra (OpenCV 2.4) with accelerated CPU functions. OpenCV4Tegra is now deprecated. Here is a recipe for building a OpenCV from source.
+JetPack gives the option of installing OpenCV4Tegra (OpenCV 2.4) with accelerated CPU functions. OpenCV4Tegra is now deprecated. Here is a recipe for building OpenCV from source.
 
 OpenCV is a rich environment which can be configured in many different ways. You should configure OpenCV to fit your needs by modifying the build file "buildOpenCV.sh". Note that selecting different options in OpenCV may also have additional library requirements which are not included in these scripts.
 
