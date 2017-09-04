@@ -1,4 +1,6 @@
 #!/bin/bash
+# License: MIT. See license file in root directory
+# Copyright(c) JetsonHacks (2017)
 cd $HOME
 sudo apt-get install -y \
     libglew-dev \
