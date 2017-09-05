@@ -32,6 +32,8 @@ The Jetson is an aarch64 machine, which means that the OpenCV configuration vari
 
 When running the OpenCV tests, currently several of the tests fail.  
 
+With L4T 28.1, there is an issue with the stock install that does not allow the GStreamer examples to work. (9/4/17). The issue is discussed here: https://devtalk.nvidia.com/default/topic/1019986/jetson-tx1/getting-errors-in-using-onboard-camera-jetpack-3-1-/post/5203796/#5203796
+
 ## References
 
 Most of this information is derived from:
