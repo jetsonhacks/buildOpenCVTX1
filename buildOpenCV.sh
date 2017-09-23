@@ -21,7 +21,10 @@ sudo apt-get install -y \
     pkg-config
 
 # Python 2.7
-sudo apt-get install -y python-dev python-numpy python-py python-pytest -y
+sudo apt-get install -y python-dev python-numpy python-py python-pytest
+# GStreamer support
+sudo apt-get install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev 
+
 
 git clone https://github.com/opencv/opencv.git
 cd opencv
