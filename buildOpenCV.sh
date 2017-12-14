@@ -18,12 +18,15 @@ sudo apt-get install -y \
     libtbb-dev \
     libgtk2.0-dev \
     cmake \
-    pkg-config
+    pkg-config \
+    libatlas-base-dev \
+    gfortran \
+    libgtk-3-dev
 
 # Python 2.7
 sudo apt-get install -y python-dev python-numpy python-py python-pytest
 
-# Python 3.0
+# Python 3
 sudo apt-get install -y python3-dev python3-numpy python3-py python3-pytest
 
 # GStreamer support
