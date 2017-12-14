@@ -18,22 +18,29 @@ sudo apt-get install -y \
     libtbb-dev \
     libgtk2.0-dev \
     cmake \
-    pkg-config
+    pkg-config \
+    libatlas-base-dev \
+    gfortran \
+    libgtk-3-dev
 
 # Python 2.7
 sudo apt-get install -y python-dev python-numpy python-py python-pytest
+
+# Python 3
+sudo apt-get install -y python3-dev python3-numpy python3-py python3-pytest
+
 # GStreamer support
 sudo apt-get install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev 
 
 
 git clone https://github.com/opencv/opencv.git
 cd opencv
-git checkout -b v3.3.0 3.3.0
+git checkout -b v3.3.1 3.3.1
 # This is for the test data
 cd $HOME
 git clone https://github.com/opencv/opencv_extra.git
 cd opencv_extra
-git checkout -b v3.3.0 3.3.0
+git checkout -b v3.3.1 3.3.1
 
 cd $HOME/opencv
 mkdir build
@@ -51,7 +58,7 @@ cmake \
     -DBUILD_EXAMPLES=ON \
     -DBUILD_opencv_java=OFF \
     -DBUILD_opencv_python2=ON \
-    -DBUILD_opencv_python3=OFF \
+    -DBUILD_opencv_python3=ON \
     -DENABLE_PRECOMPILED_HEADERS=OFF \
     -DWITH_OPENCL=OFF \
     -DWITH_OPENMP=OFF \
