@@ -7,7 +7,7 @@ OPENCV_VERSION=3.4.1
 # ARCH_BIN=6.2
 # Jetson TX1
 ARCH_BIN=5.3
-CMAKE_INSTALL_PREFIX=/usr/local
+INSTALL_DIR=/usr/local
 # Download the opencv_extras repository
 # If you are installing the opencv testdata, ie
 #  OPENCV_TEST_DATA_PATH=../opencv_extra/testdata
@@ -18,6 +18,36 @@ DOWNLOAD_OPENCV_EXTRAS=NO
 OPENCV_SOURCE_DIR=$HOME
 WHEREAMI=$PWD
 
+CLEANUP=true
+
+function usage
+{
+    echo "usage: ./buildOpenCVTX1.sh [[-s sourcedir ] | [-h]]"
+    echo "-s | --sourcedir   Directory in which to place the opencv sources (default $HOME)"
+    echo "-i | --installdir  Directory in which to install opencv libraries (default /usr/local)"
+    echo "-h | --help  This message"
+}
+
+# Iterate through command line inputs
+while [ "$1" != "" ]; do
+    case $1 in
+        -s | --sourcedir )      shift
+				OPENCV_SOURCE_DIR=$1
+                                ;;
+        -i | --installdir )     shift
+                                INSTALL_DIR=$1
+                                ;;
+        -h | --help )           usage
+                                exit
+                                ;;
+        * )                     usage
+                                exit 1
+    esac
+    shift
+done
+
+CMAKE_INSTALL_PREFIX=$INSTALL_DIR
+
 source scripts/jetson_variables
 
 # Print out the current configuration
@@ -26,6 +56,7 @@ echo " NVIDIA Jetson $JETSON_BOARD"
 echo " Operating System: $JETSON_L4T_STRING [Jetpack $JETSON_JETPACK]"
 echo " Current OpenCV Installation: $JETSON_OPENCV"
 echo " OpenCV binaries will be installed in: $CMAKE_INSTALL_PREFIX"
+echo " OpenCV Source will be installed in: $OPENCV_SOURCE_DIR"
 
 if [ $DOWNLOAD_OPENCV_EXTRAS == "YES" ] ; then
  echo "Also installing opencv_extras"
@@ -87,7 +118,7 @@ fi
 if [ $DOWNLOAD_OPENCV_EXTRAS == "YES" ] ; then
  echo "Installing opencv_extras"
  # This is for the test data
- cd $SOURCE_CODE_DIR
+ cd $OPENCV_SOURCE_DIR
  git clone https://github.com/opencv/opencv_extra.git
  cd opencv_extra
  git checkout -b v${OPENCV_VERSION} ${OPENCV_VERSION}

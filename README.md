@@ -5,15 +5,26 @@ These scripts build OpenCV version 3.4 for the NVIDIA Jetson TX1 Development Kit
 
 OpenCV is a rich environment which can be configured in many different ways. You should configure OpenCV for your needs, by modifying the build file "buildOpenCV.sh". Note that selecting different options in OpenCV may also have additional library requirements which are not included in these scripts. Please read the notes below for other important points before installing.
 
+The Jetson does not have enough disk space to build a full configuration on the eMMC. The easiest method to build is to place the OpenCV source directory on external media such as a SD card, a USB flash drive or SATA drive.
+
+The buildOpenCV script has two optional command line parameters:
+
+<ul>
+<li>-s | --sourcedir   Directory in which to place the opencv sources (default $HOME)</li>
+<li>-i | --installdir  Directory in which to install opencv libraries (default /usr/local)</li>
+</ul>
+
 To run the the build file:
 
-$ ./buildOpenCV.sh
+$ ./buildOpenCV.sh -s &lt;file directory&gt;
 
-This will build and install OpenCV is the /usr/local directory.
+This will build OpenCV is the given file directory and install OpenCV is the /usr/local directory.
 
 The folder ~/opencv and ~/opencv_extras contain the source, build and extra data files. If you wish to remove them after installation, a convenience script is provided:
 
-$ ./removeOpenCVSources.sh
+$ ./removeOpenCVSources.sh -d &lt;file directory&gt;
+
+where the &lt;file directory&gt; contains the OpenCV source.
 
 ## Notes
 There may be issues if different version of OpenCV are installed. JetPack normally installs OpenCV in the /usr folder. You will need to consider if this is appropriate for your application. It is important to realize that many packages may rely on OpenCV. The standard installation by JetPack places the OpenCV libraries in the /usr directory. 
